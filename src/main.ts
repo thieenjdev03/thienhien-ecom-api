@@ -26,8 +26,11 @@ async function bootstrap() {
 
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api/docs', app, document);
-  await app.listen(process.env.PORT || 3090);
-  const baseUrl = `http://localhost:${process.env.PORT}`;
+
+  const port = process.env.PORT || 3090;
+  await app.listen(port);
+
+  const baseUrl = `http://localhost:${port}`;
   console.log(`🚀 App running at: ${baseUrl}`);
   console.log(`📚 Swagger docs: ${baseUrl}/api/docs`);
 }
